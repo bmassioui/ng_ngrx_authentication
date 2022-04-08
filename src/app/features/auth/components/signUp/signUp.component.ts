@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
 
     initializeSignUpForm(): void {
         this.signUpFormGroup = this.formBuilder.group({
-            username: new FormControl('', [Validators.required, Validators.minLength(4)]),
+            username: new FormControl('', [Validators.required, Validators.minLength(6)]),
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', [Validators.required, Validators.minLength(6)])
         });
@@ -28,6 +28,10 @@ export class SignUpComponent implements OnInit {
      * On SignUp form submitted
      */
     onSubmit(): void {
-        console.log(this.signUpFormGroup);
+        // Get all Form Controls keys and loop them
+        Object.keys(this.signUpFormGroup.controls).forEach(key => {
+            // Get errors of every form control
+            console.log(this.signUpFormGroup.get(key));
+        });
     }
 }

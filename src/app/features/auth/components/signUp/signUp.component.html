@@ -9,21 +9,42 @@
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
                     <label for="username" class="sr-only">Username</label>
-                    <input id="username" name="username" type="text"
+                    <input id="username" name="username" type="text" formControlName="username"
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Username">
+                    <div *ngIf="signUpFormGroup.get('username')?.touched && signUpFormGroup.get('username')?.dirty && signUpFormGroup.get('email')?.hasError"
+                        class="bg-red-100 border border-red-400 text-red-700 rounded relative" role="alert">
+                        <small *ngIf="signUpFormGroup.get('username')?.hasError('required')"
+                            class="block sm:inline">This field is required.</small>
+                        <small *ngIf="signUpFormGroup.get('username')?.hasError('minlength')"
+                            class="block sm:inline">The minimum length for this field is 6 characters.</small>
+                    </div>
                 </div>
                 <div>
                     <label for="email-address" class="sr-only">Email address</label>
-                    <input id="email-address" name="email" type="email"
+                    <input id="email-address" name="email" type="email" formControlName="email"
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Email address">
+                    <div *ngIf="signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.dirty && signUpFormGroup.get('email')?.hasError"
+                        class="bg-red-100 border border-red-400 text-red-700 rounded relative" role="alert">
+                        <small *ngIf="signUpFormGroup.get('email')?.hasError('required')" class="block sm:inline">This
+                            field is required.</small>
+                        <small *ngIf="signUpFormGroup.get('email')?.hasError('email')" class="block sm:inline">Email is
+                            invalid.</small>
+                    </div>
                 </div>
                 <div>
                     <label for="password" class="sr-only">Password</label>
-                    <input id="password" name="password" type="password"
+                    <input id="password" name="password" type="password" formControlName="password"
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Password">
+                    <div *ngIf="signUpFormGroup.get('password')?.touched && signUpFormGroup.get('password')?.dirty && signUpFormGroup.get('password')?.hasError"
+                        class="bg-red-100 border border-red-400 text-red-700 rounded relative" role="alert">
+                        <small *ngIf="signUpFormGroup.get('password')?.hasError('required')"
+                            class="block sm:inline">This field is required.</small>
+                        <small *ngIf="signUpFormGroup.get('password')?.hasError('minlength')"
+                            class="block sm:inline">The minimum length for this field is 6 characters.</small>
+                    </div>
                 </div>
             </div>
 
