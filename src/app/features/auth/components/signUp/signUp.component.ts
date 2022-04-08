@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { UserIterface } from "../../models/user";
 
 @Component({
@@ -16,9 +16,11 @@ export class SignUpComponent implements OnInit {
         this.initializeSignUpForm();
     }
 
-    initializeSignUpForm(): void{
+    initializeSignUpForm(): void {
         this.signUpFormGroup = this.formBuilder.group({
-            User
+            username: new FormControl('', [Validators.required, Validators.minLength(4)]),
+            email: new FormControl('', [Validators.required, Validators.email]),
+            password: new FormControl('', [Validators.required, Validators.minLength(6)])
         });
     }
 
