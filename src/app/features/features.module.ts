@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { SignInComponent } from "./auth/signIn/signIn.component";
-import { SignUpComponent } from "./auth/signUp/signUp.component";
+import { SignInComponent } from "./auth/signIn/components/signIn.component";
+import { SignUpComponent } from "./auth/signUp/components/signUp.component";
 
 @NgModule({
     declarations: [SignInComponent, SignUpComponent],
