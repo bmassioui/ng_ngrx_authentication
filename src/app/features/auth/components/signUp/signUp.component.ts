@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
 import { SignUpUserInterface } from "../../models";
 
 import { AuthService } from "../../services/auth.service";
+import { signInAction } from "../../store/auth.actions";
 
 @Component({
     selector: 'signUp-component',
@@ -11,7 +13,7 @@ import { AuthService } from "../../services/auth.service";
 export class SignUpComponent implements OnInit {
     public signUpFormGroup: FormGroup = new FormGroup({});
 
-    constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+    constructor(private formBuilder: FormBuilder, private authService: AuthService, private store: Store) { }
 
     ngOnInit(): void {
         this.initializeSignUpForm();
@@ -40,10 +42,6 @@ export class SignUpComponent implements OnInit {
             }
         };
 
-        this.authService.SignUp(signUpUserInterface).subscribe({
-            next(response) { console.log(response); },
-            error(err) { console.error('Error: ' + err); },
-            complete() { console.log('Completed'); }
-        });
+        this.store.dispatch(signInAction({ signInUserInterface: signUpUserInterface }));
     }
 }
