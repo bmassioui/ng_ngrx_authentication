@@ -1,13 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { UserIterface } from "../../models/user";
 
 @Component({
     selector: 'signUp-component',
     templateUrl: './signUp.component.html'
 })
 export class SignUpComponent implements OnInit {
-    public user: UserIterface = {};
     public signUpFormGroup: FormGroup = new FormGroup({});
 
     constructor(private formBuilder: FormBuilder) { }
