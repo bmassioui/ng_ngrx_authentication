@@ -31,5 +31,6 @@ export class SignUpComponent implements OnInit {
      * On SignUp form submitted
      */
     onSubmit(): void {
+        console.log(this.signUpFormGroup.value);
     }
 }
