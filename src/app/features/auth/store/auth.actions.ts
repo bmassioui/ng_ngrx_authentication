@@ -22,7 +22,7 @@ export const signUpSuccessAction = createAction(
 /**
  * SignUp Failure Action
  */
-export const SignUpFailureAction = createAction(
+export const signUpFailureAction = createAction(
     ActionTypes.SIGNUP_FAILURE,
     props<{ erros: ErrorListInterface }>()
 );
@@ -38,7 +38,7 @@ export const signInAction = createAction(
 /**
  * SignIn Success Action
  */
-export const SignInSuccessAction = createAction(
+export const signInSuccessAction = createAction(
     ActionTypes.SIGNIN_SUCCESS,
     props<{ currentUser: CurrentUserInterface }>()
 );
@@ -46,7 +46,7 @@ export const SignInSuccessAction = createAction(
 /**
  * SignIn Failure Action
  */
-export const SignInFailureAction = createAction(
+export const signInFailureAction = createAction(
     ActionTypes.SIGNIN_FAILURE,
     props<{ errors: ErrorListInterface }>()
 );
