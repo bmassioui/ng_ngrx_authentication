@@ -1,10 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Store } from "@ngrx/store";
+import { select, Store } from "@ngrx/store";
+import { Observable, of } from "rxjs";
+import { ErrorListInterface } from "src/app/shared/models";
 import { SignUpUserInterface } from "../../models";
 
 import { AuthService } from "../../services/auth.service";
 import { signInAction } from "../../store/auth.actions";
+import { isSubmitting, validationErrors } from "../../store/auth.selectors";
 
 @Component({
     selector: 'signUp-component',
@@ -12,11 +15,21 @@ import { signInAction } from "../../store/auth.actions";
 })
 export class SignUpComponent implements OnInit {
     public signUpFormGroup: FormGroup = new FormGroup({});
+    public backEndErrors$: Observable<ErrorListInterface | null> = of(null)
+    public isSubmitting$: Observable<boolean> = of(false)
 
     constructor(private formBuilder: FormBuilder, private authService: AuthService, private store: Store) { }
 
     ngOnInit(): void {
         this.initializeSignUpForm();
+    }
+
+    /**
+     * Initialize SignUp Component Properties
+     */
+    initializeProperties():void{
+        this.backEndErrors$ = this.store.pipe(select(validationErrors));
+        this.isSubmitting$ = this.store.pipe(select(isSubmitting));
     }
 
     /**

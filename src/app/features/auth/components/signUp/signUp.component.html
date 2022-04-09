@@ -5,7 +5,7 @@
                 alt="Workflow">
             <h2 class="mt-6 text-center text-2xl font-extrabold text-gray-900">Create new account</h2>
         </div>
-        <errorList-component></errorList-component>
+        <errorList-component [errors]="backEndErrors$ | async"></errorList-component>
         <form class="mt-8 space-y-6" (ngSubmit)="onSubmit()" [formGroup]="signUpFormGroup">
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
