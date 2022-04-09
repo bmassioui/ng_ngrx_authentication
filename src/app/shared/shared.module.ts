@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { ErrorListComponent } from "./components/errorList/errorList.component";
@@ -8,9 +9,9 @@ import { LocalStorageService } from "./services/localStorage.service";
 
 @NgModule({
     declarations: [HeaderComponent, FooterComponent, ErrorListComponent],
-    imports: [RouterModule],
+    imports: [CommonModule, RouterModule],
     exports: [HeaderComponent, FooterComponent, ErrorListComponent],
-    providers:[LocalStorageService]
+    providers: [LocalStorageService]
 })
 
 export class SharedModule { }

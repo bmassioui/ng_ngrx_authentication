@@ -18,6 +18,7 @@ export class AuthEffects {
         this.actions$.pipe(
             ofType(ActionTypes.SIGNUP),
             switchMap(({ request }) => {
+                console.log(request);
                 return this.authService.SignUp(request).pipe(
                     map((currentUser: CurrentUserInterface) => {
                         return signUpSuccessAction({ currentUser })

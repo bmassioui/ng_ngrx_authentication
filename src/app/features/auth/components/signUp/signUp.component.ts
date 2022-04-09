@@ -6,7 +6,7 @@ import { ErrorListInterface } from "src/app/shared/models";
 import { SignUpUserInterface } from "../../models";
 
 import { AuthService } from "../../services/auth.service";
-import { signInAction } from "../../store/auth.actions";
+import { signUpAction } from "../../store/auth.actions";
 import { isSubmitting, validationErrors } from "../../store/auth.selectors";
 
 @Component({
@@ -27,7 +27,7 @@ export class SignUpComponent implements OnInit {
     /**
      * Initialize SignUp Component Properties
      */
-    initializeProperties():void{
+    initializeProperties(): void {
         this.backEndErrors$ = this.store.pipe(select(validationErrors));
         this.isSubmitting$ = this.store.pipe(select(isSubmitting));
     }
@@ -55,6 +55,6 @@ export class SignUpComponent implements OnInit {
             }
         };
 
-        this.store.dispatch(signInAction({ signInUserInterface: signUpUserInterface }));
+        this.store.dispatch(signUpAction({ signUpUserInterface: signUpUserInterface }));
     }
 }

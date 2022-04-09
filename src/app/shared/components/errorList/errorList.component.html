@@ -1,10 +1,4 @@
-<ul class="error-messages">
-    <li *ngFor="let error of errorList">
-        {{ error }}
-    </li>
-</ul>
-
-<div role="alert" *ngIf="errorList">
+<div role="alert" *ngIf="errorList.length != 0">
     <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
         Validation errors
     </div>
