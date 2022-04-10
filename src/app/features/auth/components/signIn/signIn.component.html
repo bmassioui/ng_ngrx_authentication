@@ -5,19 +5,21 @@
                 alt="Workflow">
             <h2 class="mt-6 text-center text-2xl font-extrabold text-gray-900">SignIn to my account</h2>
         </div>
+        <errorList-component [errors]="backEndErrors$ | async"></errorList-component>
         <form class="mt-8 space-y-6" (ngSubmit)="onSubmit()" [formGroup]="signInFormGroup">
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
-                    <label for="username" class="sr-only">Username</label>
-                    <input id="username" name="username" type="text" formControlName="username"
+                    <label for="email-address" class="sr-only">Email address</label>
+                    <input id="email-address" name="email" type="email" formControlName="email"
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Username">
-                    <div *ngIf="signInFormGroup.get('username')?.touched && signInFormGroup.get('username')?.dirty && signInFormGroup.get('email')?.hasError"
+                        placeholder="Email address">
+                    <div *ngIf="signInFormGroup.get('email')?.touched && signInFormGroup.get('email')?.dirty && signInFormGroup.get('email')?.hasError"
                         class="bg-red-100 border border-red-400 text-red-700 rounded relative" role="alert">
-                        <small *ngIf="signInFormGroup.get('username')?.hasError('required')"
-                            class="block sm:inline">This field is required.</small>
-                        <small *ngIf="signInFormGroup.get('username')?.hasError('minlength')"
-                            class="block sm:inline">The minimum length for this field is 6 characters.</small>
+                        <small *ngIf="signInFormGroup.get('email')?.hasError('required')" class="block sm:inline">This
+                            field is required.</small>
+                        <small *ngIf="signInFormGroup.get('email')?.hasError('email')" class="block sm:inline">Email
+                            is
+                            invalid.</small>
                     </div>
                 </div>
                 <div>
@@ -37,13 +39,14 @@
 
             <div class="flex items-center justify-between">
                 <div class="text-sm">
-                    <a [routerLink]="['/signUp']" class="font-medium text-indigo-600 hover:text-indigo-500"> I don't have an
+                    <a [routerLink]="['/signUp']" class="font-medium text-indigo-600 hover:text-indigo-500"> I don't
+                        have an
                         account? </a>
                 </div>
             </div>
 
             <div>
-                <button type="submit" [disabled]="!signInFormGroup.valid"
+                <button type="submit" [disabled]="!signInFormGroup.valid || (isSubmitting$ | async)"
                     class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                         <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
