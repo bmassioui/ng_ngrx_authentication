@@ -23,7 +23,7 @@ export class AuthEffects {
                         return signUpSuccessAction({ currentUser })
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {
-                        return of(signUpFailureAction({ erros: errorResponse.error }))
+                        return of(signUpFailureAction({ errors: errorResponse.error }))
                     })
                 )
             })

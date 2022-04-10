@@ -24,7 +24,7 @@ export const signUpSuccessAction = createAction(
  */
 export const signUpFailureAction = createAction(
     ActionTypes.SIGNUP_FAILURE,
-    props<{ erros: ErrorListInterface }>()
+    props<{ errors: ErrorListInterface }>()
 );
 
 /**
