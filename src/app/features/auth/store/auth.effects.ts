@@ -12,14 +12,13 @@ export class AuthEffects {
     constructor(private actions$: Actions, private authService: AuthService) { }
 
     /**
-     * SignIn Effect
+     * SignUp Effect
      */
     signUp$ = createEffect(() =>
         this.actions$.pipe(
             ofType(ActionTypes.SIGNUP),
-            switchMap(({ request }) => {
-                console.log(request);
-                return this.authService.SignUp(request).pipe(
+            switchMap(({ signUpUserInterface }) => {
+                return this.authService.SignUp(signUpUserInterface).pipe(
                     map((currentUser: CurrentUserInterface) => {
                         return signUpSuccessAction({ currentUser })
                     }),
@@ -38,8 +37,8 @@ export class AuthEffects {
     singIn$ = createEffect(() =>
         this.actions$.pipe(
             ofType(ActionTypes.SIGNIN),
-            switchMap(({ request }) => {
-                return this.authService.SignIn(request).pipe(
+            switchMap(({ signInUserInterface }) => {
+                return this.authService.SignIn(signInUserInterface).pipe(
                     map((currentUser: CurrentUserInterface) => {
                         return signInSuccessAction({ currentUser })
                     }),
