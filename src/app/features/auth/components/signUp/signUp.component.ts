@@ -29,6 +29,8 @@ export class SignUpComponent implements OnInit {
 
     /**
      * Redirect to UserList when User is Already LoggedIn
+     * Feature  - Don't show SignUp & SignIn buttons when User is 
+     * LoggedIn and Show Welcome @username instead of buttons(this feature should be implemented in header component)
      */
     navigateToUserList(): void {
         this.isLoggedIn().subscribe((result) => { if (result) this.router.navigate(['/userList']) });
