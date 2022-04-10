@@ -7,6 +7,8 @@
         </div>
         <errorList-component [errors]="backEndErrors$ | async"></errorList-component>
         <form class="mt-8 space-y-6" (ngSubmit)="onSubmit()" [formGroup]="signUpFormGroup">
+            <!-- <fieldset [disabled]="isSubmitting$ | async"> -->
+            <legend></legend>
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
                     <label for="username" class="sr-only">Username</label>
@@ -30,7 +32,8 @@
                         class="bg-red-100 border border-red-400 text-red-700 rounded relative" role="alert">
                         <small *ngIf="signUpFormGroup.get('email')?.hasError('required')" class="block sm:inline">This
                             field is required.</small>
-                        <small *ngIf="signUpFormGroup.get('email')?.hasError('email')" class="block sm:inline">Email is
+                        <small *ngIf="signUpFormGroup.get('email')?.hasError('email')" class="block sm:inline">Email
+                            is
                             invalid.</small>
                     </div>
                 </div>
@@ -51,7 +54,8 @@
 
             <div class="flex items-center justify-between">
                 <div class="text-sm">
-                    <a [routerLink]="['/signIn']" class="font-medium text-indigo-600 hover:text-indigo-500"> I have an
+                    <a [routerLink]="['/signIn']" class="font-medium text-indigo-600 hover:text-indigo-500"> I have
+                        an
                         account? </a>
                 </div>
             </div>
@@ -71,6 +75,7 @@
                     Sign Up
                 </button>
             </div>
+            <!-- </fieldset> -->
         </form>
     </div>
 </div>
