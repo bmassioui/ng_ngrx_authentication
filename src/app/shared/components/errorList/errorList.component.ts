@@ -15,8 +15,6 @@ export class ErrorListComponent {
     @Input()
     set errors(errorList: ErrorListInterface | null) {
 
-        console.log(errorList);
-
         if (errorList == null) return
 
         this.formattedErrors = Object.keys(errorList.errors || {})
