@@ -12,3 +12,7 @@ Authentication in Angular V13.0 with NGRX (for state management) using JWT(Json 
 - `ng serve` :  run project `http://localhost:4200/`.
 - `ng build` : build artifacts will be stored in the `dist/` directory.
 - `ng test` : run unit tests via [Karma](https://karma-runner.github.io).
+
+## Features
+- SignUp with validation
+  ![SignUp](./assets/SignUp.png)
