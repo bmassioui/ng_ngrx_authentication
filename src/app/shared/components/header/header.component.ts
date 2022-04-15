@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent {
 
-    public toggleMenu: boolean = false;
+    public toggleAvatarSubMenu: boolean = false;
 
     constructor(private router: Router) { }
 
@@ -29,13 +29,13 @@ export class HeaderComponent {
      * Update toggleMenu's value when user clicks on Avatar
      */
     onAvatarClick(): void {
-        this.toggleMenu = !this.toggleMenu;
+        this.toggleAvatarSubMenu = !this.toggleAvatarSubMenu;
     }
 
     /**
      * Update toggleMenu's value when Mouse leaves the AVatar's SubMenu
      */
     onMouseLeaveSubMenu(): void {
-        this.toggleMenu = !this.toggleMenu;
+        this.toggleAvatarSubMenu = !this.toggleAvatarSubMenu;
     }
 }
