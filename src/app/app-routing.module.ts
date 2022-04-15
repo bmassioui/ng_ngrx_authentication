@@ -4,7 +4,8 @@ import { FeaturesRoutingModule } from './features/features-routing.module';
 import { HomeComponent } from './shared/components/home/home.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent}
 ];
 
 @NgModule({
