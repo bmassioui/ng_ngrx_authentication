@@ -7,6 +7,8 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent {
 
+    public toggleMenu: boolean = false;
+
     constructor(private router: Router) { }
 
     /**
@@ -21,5 +23,12 @@ export class HeaderComponent {
      */
     onSignUpClick(): void {
         this.router.navigateByUrl('/signUp');
+    }
+
+    /**
+     * Update toggleMenu's value when user clicks on Avatar
+     */
+    onAvatarClick() : void {
+        this.toggleMenu = !this.toggleMenu;
     }
 }
