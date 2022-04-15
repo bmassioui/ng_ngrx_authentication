@@ -14,13 +14,13 @@
             </h4>
             <div class="flex space-x-2">
                 <div class="flex flex-col flex-0">
-                    <a href="http://localhost:4200/signIn"
+                    <a [routerLink]="['/signIn']"
                         class="bg-white hover:bg-gray-100 py-2 px-6 rounded-lg text-lg text-gray-800 font-bold uppercase mt-10">
                         Sign In
                     </a>
                 </div>
                 <div class="flex flex-col flex-1">
-                    <a (click)="onSignUpClick()"
+                    <a [routerLink]="['/signUp']"
                         class="bg-white hover:bg-gray-100 py-2 px-6 rounded-lg text-lg text-gray-800 font-bold uppercase mt-10">
                         Sign Up
                     </a>
