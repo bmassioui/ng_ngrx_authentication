@@ -28,7 +28,14 @@ export class HeaderComponent {
     /**
      * Update toggleMenu's value when user clicks on Avatar
      */
-    onAvatarClick() : void {
+    onAvatarClick(): void {
+        this.toggleMenu = !this.toggleMenu;
+    }
+
+    /**
+     * Update toggleMenu's value when Mouse leaves the AVatar's SubMenu
+     */
+    onMouseLeaveSubMenu(): void {
         this.toggleMenu = !this.toggleMenu;
     }
 }
