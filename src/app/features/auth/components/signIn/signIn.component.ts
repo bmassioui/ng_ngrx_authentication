@@ -35,7 +35,7 @@ export class SignInComponent implements OnInit {
     * LoggedIn and Show Welcome @username instead of buttons(this feature should be implemented in header component)
     */
     navigateToUserList(): void {
-        this.isLoggedIn().subscribe((result) => { if (result) this.router.navigate(['/userList']) });
+        this.isLoggedIn().subscribe((result) => { if (result) this.router.navigate([SharedConstants.USERS_ROUTE_NAME]) });
     }
 
     /**

@@ -7,12 +7,13 @@ import { HeaderComponent } from "./components/header/header.component";
 import { HomeComponent } from "./components/home/home.component";
 import { LeftNavComponent } from "./components/leftnav/leftnav.component";
 import { NotFoundComponent } from "./components/notfound/notfound.component";
+import { PreceedStringWithSlashPipe } from "./pipes";
 import { LocalStorageService } from "./services/localStorage.service";
 
 @NgModule({
-    declarations: [HeaderComponent, ErrorListComponent, LeftNavComponent, HomeComponent, NotFoundComponent],
+    declarations: [HeaderComponent, ErrorListComponent, LeftNavComponent, HomeComponent, NotFoundComponent, PreceedStringWithSlashPipe],
     imports: [CommonModule, RouterModule],
-    exports: [HeaderComponent, ErrorListComponent, LeftNavComponent, HomeComponent, NotFoundComponent],
+    exports: [HeaderComponent, ErrorListComponent, LeftNavComponent, HomeComponent, NotFoundComponent, PreceedStringWithSlashPipe],
     providers: [LocalStorageService]
 })
 
