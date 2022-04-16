@@ -6,12 +6,13 @@ import { ErrorListComponent } from "./components/errorList/errorList.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { HomeComponent } from "./components/home/home.component";
 import { LeftNavComponent } from "./components/leftnav/leftnav.component";
+import { NotFoundComponent } from "./components/notfound/notfound.component";
 import { LocalStorageService } from "./services/localStorage.service";
 
 @NgModule({
-    declarations: [HeaderComponent, ErrorListComponent, LeftNavComponent, HomeComponent],
+    declarations: [HeaderComponent, ErrorListComponent, LeftNavComponent, HomeComponent, NotFoundComponent],
     imports: [CommonModule, RouterModule],
-    exports: [HeaderComponent, ErrorListComponent, LeftNavComponent, HomeComponent],
+    exports: [HeaderComponent, ErrorListComponent, LeftNavComponent, HomeComponent, NotFoundComponent],
     providers: [LocalStorageService]
 })
 
