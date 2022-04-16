@@ -52,14 +52,15 @@
                                 class="block sm:inline">The minimum length for this field is 6 characters.</small>
                         </p>
                     </label>
-                    <div class="flex mt-6 text-sm">
+                    <div class="bolck mt-6 text-sm">
                         <label class="flex items-center">
-                            <input type="checkbox"
-                                class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple"
-                                required>
+                            <input type="checkbox" name="signUpUserAgreement" id="signUpUserAgreement"
+                                formControlName="useragreement"
+                                class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple">
                             <span class="ml-2">
                                 I agree to the
-                                <span class="underline">privacy policy</span>
+                                <span class="underline">privacy policy<strong
+                                        class="text-red-500 text-xs italic">*</strong></span>
                             </span>
                         </label>
                     </div>
