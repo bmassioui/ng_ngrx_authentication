@@ -11,10 +11,10 @@ import { SignUpComponent } from "./auth/components/signUp/signUp.component";
 import { AuthService } from "./auth/services/auth.service";
 import { AuthEffects } from "./auth/store/auth.effects";
 import { reducers } from "./auth/store/auth.reducer";
-import { UserList } from "./usersMangement/component/userList/userList.component";
+import { Users } from "./usersMangement/component/users/users.component";
 
 @NgModule({
-    declarations: [SignInComponent, SignUpComponent, UserList],
+    declarations: [SignInComponent, SignUpComponent, Users],
     imports: [
         CommonModule,
         RouterModule,
@@ -24,7 +24,7 @@ import { UserList } from "./usersMangement/component/userList/userList.component
         StoreModule.forFeature('auth', reducers),
         EffectsModule.forFeature([AuthEffects])
     ],
-    exports: [SignInComponent, SignUpComponent, UserList],
+    exports: [SignInComponent, SignUpComponent, Users],
     providers: [AuthService]
 })
 

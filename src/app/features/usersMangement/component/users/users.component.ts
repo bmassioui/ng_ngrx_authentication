@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 
 @Component({
     selector:'userList-component',
-    templateUrl: './userList.component.html'
+    templateUrl: './users.component.html'
 })
 
-export class UserList{}
+export class Users{}
