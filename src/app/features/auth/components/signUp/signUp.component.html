@@ -1,140 +1,82 @@
-<!-- <div class="min-h-full flex items-center justify-center mt-4 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-        <div>
-            <img class="mx-auto h-9 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                alt="Workflow">
-            <h2 class="mt-6 text-center text-2xl font-extrabold text-gray-900">Create new account</h2>
-        </div>
-        <errorList-component [errors]="backEndErrors$ | async"></errorList-component>
-        <form class="mt-8 space-y-6" (ngSubmit)="onSubmit()" [formGroup]="signUpFormGroup">
-            <legend></legend>
-            <div class="rounded-md shadow-sm -space-y-px">
-                <div>
-                    <label for="username" class="sr-only">Username</label>
-                    <input id="username" name="username" type="text" formControlName="username"
-                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Username">
-                    <div *ngIf="signUpFormGroup.get('username')?.touched && signUpFormGroup.get('username')?.dirty && signUpFormGroup.get('email')?.hasError"
-                        class="bg-red-100 border border-red-400 text-red-700 rounded relative" role="alert">
-                        <small *ngIf="signUpFormGroup.get('username')?.hasError('required')"
-                            class="block sm:inline">This field is required.</small>
-                        <small *ngIf="signUpFormGroup.get('username')?.hasError('minlength')"
-                            class="block sm:inline">The minimum length for this field is 6 characters.</small>
-                    </div>
-                </div>
-                <div>
-                    <label for="email-address" class="sr-only">Email address</label>
-                    <input id="email-address" name="email" type="email" formControlName="email"
-                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Email address">
-                    <div *ngIf="signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.dirty && signUpFormGroup.get('email')?.hasError"
-                        class="bg-red-100 border border-red-400 text-red-700 rounded relative" role="alert">
-                        <small *ngIf="signUpFormGroup.get('email')?.hasError('required')" class="block sm:inline">This
-                            field is required.</small>
-                        <small *ngIf="signUpFormGroup.get('email')?.hasError('email')" class="block sm:inline">Email
-                            is
-                            invalid.</small>
-                    </div>
-                </div>
-                <div>
-                    <label for="password" class="sr-only">Password</label>
-                    <input id="password" name="password" type="password" formControlName="password"
-                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Password">
-                    <div *ngIf="signUpFormGroup.get('password')?.touched && signUpFormGroup.get('password')?.dirty && signUpFormGroup.get('password')?.hasError"
-                        class="bg-red-100 border border-red-400 text-red-700 rounded relative" role="alert">
-                        <small *ngIf="signUpFormGroup.get('password')?.hasError('required')"
-                            class="block sm:inline">This field is required.</small>
-                        <small *ngIf="signUpFormGroup.get('password')?.hasError('minlength')"
-                            class="block sm:inline">The minimum length for this field is 6 characters.</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex items-center justify-between">
-                <div class="text-sm">
-                    <a [routerLink]="['/signIn']" class="font-medium text-indigo-600 hover:text-indigo-500"> I have
-                        an
-                        account? </a>
-                </div>
-            </div>
-
-            <div>
-                <button type="submit" [disabled]="!signUpFormGroup.valid || (isSubmitting$ | async)"
-                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                        <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                            aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </span>
-                    Sign Up
-                </button>
-            </div>
-        </form>
-    </div>
-</div> -->
-
-
-
 <div class="flex max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl mt-5">
     <div class="flex flex-col overflow-y-auto md:flex-row">
         <div class="h-32 md:h-auto md:w-1/2">
-            <img aria-hidden="true" class="object-cover w-full h-full"
-                [src]="'assets/images/signup/signup-office.jpeg'" alt="Office">
+            <img aria-hidden="true" class="object-cover w-full h-full" [src]="'assets/images/signup/signup-office.jpeg'"
+                alt="Office">
         </div>
         <div class="flex items-center justify-center p-3 sm:p-12 md:w-1/2">
             <div class="w-full">
                 <h1 class="mb-4 text-xl font-semibold text-gray-70">
                     Create account
                 </h1>
-                <label class="block text-sm">
-                    <span class="text-gray-700">Email</span>
-                    <input
-                        class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
-                        placeholder="Jane Doe">
-                </label>
-                <label class="block mt-4 text-sm">
-                    <span class="text-gray-700">Password</span>
-                    <input
-                        class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
-                        placeholder="***************" type="password">
-                </label>
-                <label class="block mt-4 text-sm">
-                    <span class="text-gray-700">
-                        Confirm password
-                    </span>
-                    <input
-                        class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
-                        placeholder="***************" type="password">
-                </label>
-
-                <div class="flex mt-6 text-sm">
-                    <label class="flex items-center">
-                        <input type="checkbox"
-                            class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple">
-                        <span class="ml-2">
-                            I agree to the
-                            <span class="underline">privacy policy</span>
-                        </span>
+                <errorList-component [errors]="backEndErrors$ | async"></errorList-component>
+                <form (ngSubmit)="onSubmit()" [formGroup]="signUpFormGroup">
+                    <label class="block text-sm">
+                        <span class="text-gray-700">Username</span>
+                        <input name="signUpUsername" id="signUpUsername" formControlName="username"
+                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
+                            placeholder="Bob">
+                        <p *ngIf="signUpFormGroup.get('username')?.touched && signUpFormGroup.get('username')?.dirty && signUpFormGroup.get('email')?.hasError"
+                            class="text-red-500 text-xs italic">
+                            <small *ngIf="signUpFormGroup.get('username')?.hasError('required')"
+                                class="block sm:inline">This field is required.</small>
+                            <small *ngIf="signUpFormGroup.get('username')?.hasError('minlength')"
+                                class="block sm:inline">The minimum length for this field is 6 characters.</small>
+                        </p>
                     </label>
-                </div>
+                    <label class="block mt-4 text-sm">
+                        <span class="text-gray-700">Email</span>
+                        <input name="signUpEmail" id="signUpEmail" formControlName="email"
+                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
+                            placeholder="email@domain.com">
+                        <div *ngIf="signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.dirty && signUpFormGroup.get('email')?.hasError"
+                            class="text-red-500 text-xs italic">
+                            <small *ngIf="signUpFormGroup.get('email')?.hasError('required')"
+                                class="block sm:inline">This
+                                field is required.</small>
+                            <small *ngIf="signUpFormGroup.get('email')?.hasError('email')" class="block sm:inline">Email
+                                is
+                                invalid.</small>
+                        </div>
+                    </label>
+                    <label class="block mt-4 text-sm">
+                        <span class="text-gray-700">Password</span>
+                        <input name="signUpPassword" id="signUpPassword" formControlName="password"
+                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
+                            placeholder="***************" type="password">
+                        <p *ngIf="signUpFormGroup.get('password')?.touched && signUpFormGroup.get('password')?.dirty && signUpFormGroup.get('password')?.hasError"
+                            class="text-red-500 text-xs italic">
+                            <small *ngIf="signUpFormGroup.get('password')?.hasError('required')"
+                                class="block sm:inline">This field is required.</small>
+                            <small *ngIf="signUpFormGroup.get('password')?.hasError('minlength')"
+                                class="block sm:inline">The minimum length for this field is 6 characters.</small>
+                        </p>
+                    </label>
+                    <div class="flex mt-6 text-sm">
+                        <label class="flex items-center">
+                            <input type="checkbox"
+                                class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple"
+                                required>
+                            <span class="ml-2">
+                                I agree to the
+                                <span class="underline">privacy policy</span>
+                            </span>
+                        </label>
+                    </div>
 
-                <button type="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                    Create account
-                </button>
+                    <button type="submit" [disabled]="!signUpFormGroup.valid || (isSubmitting$ | async)"
+                        class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                        Create account
+                    </button>
 
-                <hr class="my-8">
+                    <hr class="my-8">
 
-                <p class="mt-4">
-                    <a class="text-sm font-medium text-purple-600 hover:underline"
-                        [routerLink]="['/signIn']">
-                        I already have an account? Sign Up
-                    </a>
-                </p>
+                    <p class="mt-4">
+                        <a class="text-sm font-medium text-purple-600 hover:underline" [routerLink]="['/signIn']">
+                            I already have an account? Sign Up
+                        </a>
+                    </p>
+                </form>
             </div>
         </div>
     </div>

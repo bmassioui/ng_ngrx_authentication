@@ -16,7 +16,7 @@
                             <span class="text-gray-700">Email</span>
                             <input name="signInEmail" id="signInEmail" formControlName="email"
                                 class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
-                                placeholder="Jane Doe" />
+                                placeholder="email@domain.com" />
                             <p *ngIf="signInFormGroup.get('password')?.touched && signInFormGroup.get('password')?.dirty && signInFormGroup.get('password')?.hasError"
                                 class="text-red-500 text-xs italic">
                                 <small *ngIf="signInFormGroup.get('email')?.hasError('required')"
