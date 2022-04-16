@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { SharedConstants } from "../../constants";
 
 @Component({
     selector: 'header-component',
@@ -15,14 +16,14 @@ export class HeaderComponent {
      * Navigate to SignIn Component
      */
     onSignInClick(): void {
-        this.router.navigateByUrl('/signIn');
+        this.router.navigateByUrl(SharedConstants.SIGNIN_ROUTE_NAME);
     }
 
     /**
      * Navigate to SignUp Component
      */
     onSignUpClick(): void {
-        this.router.navigateByUrl('/signUp');
+        this.router.navigateByUrl(SharedConstants.SIGNUP_ROUTE_NAME);
     }
 
     /**

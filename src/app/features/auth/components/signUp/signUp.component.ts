@@ -3,10 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { Router } from "@angular/router";
 import { select, Store } from "@ngrx/store";
 import { Observable, of } from "rxjs";
+import { SharedConstants } from "src/app/shared/constants";
 import { ErrorListInterface } from "src/app/shared/models";
 import { SignUpUserInterface } from "../../models";
 
-import { AuthService } from "../../services/auth.service";
 import { signUpAction } from "../../store/auth.actions";
 import { isLoggedIn, isSubmitting, validationErrors } from "../../store/auth.selectors";
 
@@ -18,8 +18,9 @@ export class SignUpComponent implements OnInit {
     public signUpFormGroup: FormGroup = new FormGroup({});
     public backEndErrors$: Observable<ErrorListInterface | null> = of(null)
     public isSubmitting$: Observable<boolean> = of(false)
+    public signInRouteName: string = SharedConstants.SIGNIN_ROUTE_NAME
 
-    constructor(private formBuilder: FormBuilder, private authService: AuthService, private store: Store, private router: Router) { }
+    constructor(private formBuilder: FormBuilder, private store: Store, private router: Router) { }
 
     ngOnInit(): void {
         this.navigateToUserList();
@@ -33,7 +34,7 @@ export class SignUpComponent implements OnInit {
      * LoggedIn and Show Welcome @username instead of buttons(this feature should be implemented in header component)
      */
     navigateToUserList(): void {
-        this.isLoggedIn().subscribe((result) => { if (result) this.router.navigate(['/userList']) });
+        this.isLoggedIn().subscribe((result) => { if (result) this.router.navigate([SharedConstants.USERS_ROUTE_NAME]) });
     }
 
     /**

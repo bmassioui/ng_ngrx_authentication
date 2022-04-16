@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { Router } from "@angular/router";
 import { select, Store } from "@ngrx/store";
 import { Observable, of } from "rxjs";
+import { SharedConstants } from "src/app/shared/constants";
 import { ErrorListInterface } from "src/app/shared/models";
 import { SignInUserInterface } from "../../models";
 import { signInAction } from "../../store/auth.actions";
@@ -17,6 +18,8 @@ export class SignInComponent implements OnInit {
     public signInFormGroup: FormGroup = new FormGroup({});
     public backEndErrors$: Observable<ErrorListInterface | null> = of(null)
     public isSubmitting$: Observable<boolean> = of(false)
+    public signUpRouteName: string = SharedConstants.SIGNUP_ROUTE_NAME
+
 
     constructor(private formBuilder: FormBuilder, private store: Store, private router: Router) { }
 
