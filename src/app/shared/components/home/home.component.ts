@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
     public currentUser: CurrentUserInterface | null = null;
 
-    constructor(private router: Router, private localStorageService: LocalStorageService<CurrentUserInterface>, private store: Store,) { }
+    constructor(private router: Router, private localStorageService: LocalStorageService<CurrentUserInterface>, private store: Store) { }
 
     ngOnInit(): void {
         this.initializeProperties();
