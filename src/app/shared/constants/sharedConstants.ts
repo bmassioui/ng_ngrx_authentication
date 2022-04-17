@@ -17,4 +17,9 @@ export class SharedConstants {
         'signup': `/${SharedConstants.SIGNUP_ROUTE_NAME}`,
         'users': `/${SharedConstants.USERS_ROUTE_NAME}`,
     };
+
+    /**
+     * Key for storing current user data
+     */
+    public static readonly LOCALSTORAGE_CURRENTUSER_KEY : string = 'CurrentUser';
 }
