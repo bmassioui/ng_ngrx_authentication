@@ -5,4 +5,5 @@ export enum ActionTypes{
     SIGNUP = "[Auth] SignUp",
     SIGNUP_SUCCESS = "[Auth] SignUp Success",
     SIGNUP_FAILURE = "[Auth] SignUp Failure",
+    SIGNOUT = "[Auth] SignOut"
 }

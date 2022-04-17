@@ -50,3 +50,8 @@ export const signInFailureAction = createAction(
     ActionTypes.SIGNIN_FAILURE,
     props<{ errors: ErrorListInterface }>()
 );
+
+/**
+ * SignOut Action
+ */
+export const signOutAction = createAction(ActionTypes.SIGNOUT);

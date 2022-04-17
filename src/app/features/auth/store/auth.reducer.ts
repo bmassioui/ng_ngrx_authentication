@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { AuthStateInterface } from "../models";
 
-import { signInAction, signInSuccessAction, signInFailureAction, signUpAction, signUpSuccessAction, signUpFailureAction } from "./auth.actions";
+import { signInAction, signInSuccessAction, signInFailureAction, signUpAction, signUpSuccessAction, signUpFailureAction, signOutAction } from "./auth.actions";
 
 const authInitialState: AuthStateInterface = {
     isSubmitting: false,
@@ -72,6 +72,16 @@ const authReducer = createReducer(
         currentUser: null,
         isLoggedIn: false,
         validationErrors: action.errors
+    })),
+    /**
+     * When user SignOut Action Called
+     */
+    on(signOutAction, (state): AuthStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        currentUser: null,
+        isLoggedIn: false,
+        validationErrors: null
     }))
 )
 
