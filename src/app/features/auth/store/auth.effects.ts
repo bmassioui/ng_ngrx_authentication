@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, of, switchMap } from "rxjs";
+import { catchError, map, of, switchMap, tap } from "rxjs";
 import { CurrentUserInterface } from "src/app/shared/models";
 import { LocalStorageService } from "src/app/shared/services";
 import { AuthService } from "../services/auth.service";
@@ -21,7 +21,7 @@ export class AuthEffects {
             switchMap(({ signUpUserInterface }) => {
                 return this.authService.SignUp(signUpUserInterface).pipe(
                     map((currentUser: CurrentUserInterface) => {
-                        this.localStorageService.set('token', currentUser.token) // Persist token into local storage
+                        this.localStorageService.set('token', currentUser.user.token) // Persist token into local storage
                         return signUpSuccessAction({ currentUser })
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {
@@ -42,7 +42,7 @@ export class AuthEffects {
             switchMap(({ signInUserInterface }) => {
                 return this.authService.SignIn(signInUserInterface).pipe(
                     map((currentUser: CurrentUserInterface) => {
-                        this.localStorageService.set('token', currentUser.token) // Persist token into local storage
+                        this.localStorageService.set('token', currentUser.user.token) // Persist token into local storage
                         return signInSuccessAction({ currentUser })
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {
