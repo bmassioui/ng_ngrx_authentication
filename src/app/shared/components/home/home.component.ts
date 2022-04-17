@@ -15,13 +15,13 @@ export class HomeComponent {
      * Navigate to SignIn Component
      */
     onSignInClick(): void {
-        this.router.navigateByUrl(SharedConstants.SIGNIN_ROUTE_NAME);
+        this.router.navigateByUrl(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNIN_ROUTE_NAME]);
     }
 
     /**
      * Navigate to SignUp Component
      */
     onSignUpClick(): void {
-        this.router.navigateByUrl(SharedConstants.SIGNUP_ROUTE_NAME);
+        this.router.navigateByUrl(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNUP_ROUTE_NAME]);
     }
 }
