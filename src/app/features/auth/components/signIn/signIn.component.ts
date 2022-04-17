@@ -18,7 +18,7 @@ export class SignInComponent implements OnInit {
     public signInFormGroup: FormGroup = new FormGroup({});
     public backEndErrors$: Observable<ErrorListInterface | null> = of(null)
     public isSubmitting$: Observable<boolean> = of(false)
-    public signUpRouteName: string = SharedConstants.SIGNUP_ROUTE_NAME
+    public signUpRouteUrl: string = SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNUP_ROUTE_NAME]
 
 
     constructor(private formBuilder: FormBuilder, private store: Store, private router: Router) { }
