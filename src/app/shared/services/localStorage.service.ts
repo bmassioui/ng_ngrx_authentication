@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { CurrentUserInterface } from "../models";
 
 @Injectable({
     providedIn: 'root'
@@ -7,7 +6,7 @@ import { CurrentUserInterface } from "../models";
 /**
  * Local Storage Service
  */
-export class LocalStorageService {
+export class LocalStorageService<T> {
     private localStorage: Storage;
 
     constructor() {
@@ -15,21 +14,28 @@ export class LocalStorageService {
     }
 
     /**
-     * Set new key value:string data
+     * Set new key value:T data
      * @param key 
      * @param value 
      */
-    set(key: string, value: string): void {
-        this.localStorage.setItem(key, value);
+    set(key: string, value: T): void {
+        this.localStorage.setItem(key, JSON.stringify(value));
     }
 
     /**
-     * Get value: string by its key
+     * Get value: T | null by its key
      * @param key 
      * @returns 
      */
-    get(key: string): string | null {
-        return this.localStorage.getItem(key) ?? null;
+    get(key: string): T | null {
+
+        var dataByKey = this.localStorage.getItem(key);
+
+        if (!dataByKey) return null;
+
+        let dataByKeyAsT: T = JSON.parse(dataByKey);
+
+        return dataByKeyAsT;
     }
 
     /**
