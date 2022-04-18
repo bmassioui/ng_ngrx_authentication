@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthCanActivateGuard, JwtInterceptor } from './core';
+import { AuthCanActivateGuard, ErrorInterceptor, JwtInterceptor } from './core';
 import { FeaturesModule } from './features/features.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -32,7 +32,16 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [
     AuthCanActivateGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
