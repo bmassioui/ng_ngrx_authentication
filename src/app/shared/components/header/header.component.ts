@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { signOutAction } from "src/app/features/auth/store/auth.actions";
+
+import { signOutAction } from "src/app/features/auth";
 import { SharedConstants } from "../../constants";
 import { CurrentUserInterface } from "../../models";
 import { LocalStorageService } from "../../services";
+
 
 @Component({
     selector: 'header-component',
@@ -61,7 +63,7 @@ export class HeaderComponent implements OnInit {
  */
     onSignOutClick(): void {
         this.localStorageService.remove(SharedConstants.LOCALSTORAGE_CURRENTUSER_KEY);
-        this.store.dispatch(signOutAction()); // Circular reference between shared and features !!
+        this.store.dispatch(signOutAction());
         this.navigateTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.HOME_ROUTE_NAME], true);
     }
 
