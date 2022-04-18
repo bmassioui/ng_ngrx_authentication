@@ -16,7 +16,10 @@ export class JwtInterceptor implements HttpInterceptor {
         if (!currentUserInterface || !currentUserInterface.user || !currentUserInterface.user.token) return next.handle(req);
 
         req = req.clone({
-            setHeaders: { Authorization: `Bearer ${currentUserInterface.user.token}` }
+            setHeaders: {
+                'Authorization': `Bearer ${currentUserInterface.user.token}`,
+                'Content-Type': 'application/json'
+            }
         });
 
         return next.handle(req);
