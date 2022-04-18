@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
 import { select, Store } from "@ngrx/store";
 import { Observable, of } from "rxjs";
 
-import { ErrorListInterface, SharedConstants } from "src/app/shared";
+import { ErrorListInterface, RouterService, SharedConstants } from "src/app/shared";
 import { SignUpUserInterface } from "../../models";
 import { isLoggedIn, isSubmitting, signUpAction, validationErrors } from "../../store";
 
@@ -20,22 +19,19 @@ export class SignUpComponent implements OnInit {
     public isSubmitting$: Observable<boolean> = of(false)
     public signInRouteUrl: string = SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNIN_ROUTE_NAME]
 
-
-    constructor(private formBuilder: FormBuilder, private store: Store, private router: Router) { }
+    constructor(private formBuilder: FormBuilder, private store: Store, private routerService: RouterService) { }
 
     ngOnInit(): void {
-        this.navigateToUserList();
+        this.navigateToHome();
         this.initializeSignUpForm();
         this.initializeProperties();
     }
 
     /**
-     * Redirect to UserList when User is Already LoggedIn
-     * Feature  - Don't show SignUp & SignIn buttons when User is 
-     * LoggedIn and Show Welcome @username instead of buttons(this feature should be implemented in header component)
-     */
-    navigateToUserList(): void {
-        this.isLoggedIn().subscribe((result) => { if (result) this.router.navigate([SharedConstants.USERS_ROUTE_NAME]) });
+   * Redirect to Home when User is SignedUp successfully
+   */
+    navigateToHome(): void {
+        this.isLoggedIn().subscribe((result) => { if (result) this.routerService.navigateTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.HOME_ROUTE_NAME], true) });
     }
 
     /**

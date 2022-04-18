@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
 import { ErrorListComponent, HeaderComponent, LeftNavComponent, NotFoundComponent } from "./components";
-import { LocalStorageService } from "./services";
+import { LocalStorageService, RouterService } from "./services";
 
 
 
@@ -11,7 +11,7 @@ import { LocalStorageService } from "./services";
     declarations: [HeaderComponent, ErrorListComponent, LeftNavComponent, NotFoundComponent],
     imports: [CommonModule, RouterModule],
     exports: [HeaderComponent, ErrorListComponent, LeftNavComponent, NotFoundComponent],
-    providers: [LocalStorageService]
+    providers: [LocalStorageService, RouterService]
 })
 
 export class SharedModule { }

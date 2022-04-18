@@ -1,7 +1,10 @@
 import { createAction, props } from "@ngrx/store";
-import { CurrentUserInterface, ErrorListInterface } from "src/app/shared/models";
+
+import { CurrentUserInterface, ErrorListInterface } from "src/app/shared";
 import { SignInUserInterface, SignUpUserInterface } from "../models";
-import { ActionTypes } from "../types/actionTypes";
+import { ActionTypes } from "../types";
+
+
 
 /**
  * SignUp Action

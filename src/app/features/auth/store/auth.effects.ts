@@ -1,13 +1,13 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, of, switchMap, tap } from "rxjs";
-import { SharedConstants } from "src/app/shared/constants";
-import { CurrentUserInterface } from "src/app/shared/models";
-import { LocalStorageService } from "src/app/shared/services";
-import { AuthService } from "../services/auth.service";
-import { ActionTypes } from "../types/actionTypes";
-import { signUpFailureAction, signUpSuccessAction, signInSuccessAction, signInFailureAction } from "./auth.actions";
+import { catchError, map, of, switchMap } from "rxjs";
+import { CurrentUserInterface, LocalStorageService, SharedConstants } from "src/app/shared";
+import { AuthService } from "../services";
+import { ActionTypes } from "../types";
+import { signInFailureAction, signInSuccessAction, signUpFailureAction, signUpSuccessAction } from "./auth.actions";
+
+
 
 @Injectable()
 export class AuthEffects {
@@ -22,7 +22,7 @@ export class AuthEffects {
             switchMap(({ signUpUserInterface }) => {
                 return this.authService.SignUp(signUpUserInterface).pipe(
                     map((currentUser: CurrentUserInterface) => {
-                        this.localStorageService.set(SharedConstants.LOCALSTORAGE_CURRENTUSER_KEY, currentUser) // Persist token into local storage
+                        this.localStorageService.set(SharedConstants.LOCALSTORAGE_CURRENTUSER_KEY, currentUser)
                         return signUpSuccessAction({ currentUser })
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {
@@ -43,7 +43,7 @@ export class AuthEffects {
             switchMap(({ signInUserInterface }) => {
                 return this.authService.SignIn(signInUserInterface).pipe(
                     map((currentUser: CurrentUserInterface) => {
-                        this.localStorageService.set(SharedConstants.LOCALSTORAGE_CURRENTUSER_KEY, currentUser) // Persist token into local storage
+                        this.localStorageService.set(SharedConstants.LOCALSTORAGE_CURRENTUSER_KEY, currentUser)
                         return signInSuccessAction({ currentUser })
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {

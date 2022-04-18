@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
 import { select, Store } from "@ngrx/store";
 import { Observable, of } from "rxjs";
 
-import { ErrorListInterface, SharedConstants } from "src/app/shared";
+import { ErrorListInterface, RouterService, SharedConstants } from "src/app/shared";
 import { SignInUserInterface } from "../../models";
 import { isLoggedIn, isSubmitting, signInAction, validationErrors } from "../../store";
 
@@ -21,21 +20,19 @@ export class SignInComponent implements OnInit {
     public signUpRouteUrl: string = SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNUP_ROUTE_NAME]
 
 
-    constructor(private formBuilder: FormBuilder, private store: Store, private router: Router) { }
+    constructor(private formBuilder: FormBuilder, private store: Store, private routerService: RouterService) {    }
 
     ngOnInit(): void {
-        this.navigateToUserList();
+        this.navigateToHome();
         this.initializeProperties();
-        this.initializeSignUpForm();
+        this.initializeSignInForm();
     }
 
     /**
-    * Redirect to UserList when User is Already LoggedIn
-    * Feature  - Don't show SignUp & SignIn buttons when User is 
-    * LoggedIn and Show Welcome @username instead of buttons(this feature should be implemented in header component)
+    * Redirect to Home when User is SignedIn successfully
     */
-    navigateToUserList(): void {
-        this.isLoggedIn().subscribe((result) => { if (result) this.router.navigate([SharedConstants.USERS_ROUTE_NAME]) });
+    navigateToHome(): void {
+        this.isLoggedIn().subscribe((result) => { if (result) this.routerService.navigateTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.HOME_ROUTE_NAME], true) });
     }
 
     /**
@@ -57,7 +54,7 @@ export class SignInComponent implements OnInit {
     /**
      * Initialize SignIn form
      */
-    initializeSignUpForm(): void {
+    initializeSignInForm(): void {
         this.signInFormGroup = this.formBuilder.group({
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', [Validators.required, Validators.minLength(6)])
