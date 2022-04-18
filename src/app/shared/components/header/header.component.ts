@@ -32,14 +32,14 @@ export class HeaderComponent implements OnInit {
      * Navigate to SignIn Component
      */
     onSignInClick(): void {
-        this.redirectTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNIN_ROUTE_NAME]);
+        this.navigateTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNIN_ROUTE_NAME]);
     }
 
     /**
      * Navigate to SignUp Component
      */
     onSignUpClick(): void {
-        this.redirectTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNUP_ROUTE_NAME]);
+        this.navigateTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNUP_ROUTE_NAME]);
     }
 
     /**
@@ -62,14 +62,23 @@ export class HeaderComponent implements OnInit {
     onSignOutClick(): void {
         this.localStorageService.remove(SharedConstants.LOCALSTORAGE_CURRENTUSER_KEY);
         this.store.dispatch(signOutAction()); // Circular reference between shared and features !!
-        this.redirectTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.SIGNIN_ROUTE_NAME]);
+        this.navigateTo(SharedConstants.ROUTENAMES_ROUTEURLS[SharedConstants.HOME_ROUTE_NAME], true);
     }
 
     /**
-     * Redirect to url
+     * Navigate/Reload to url
      * @param url Targer Url
      */
-    redirectTo(url: string): void {
+    navigateTo(url: string, isReload: boolean = false): void {
+
+        if (isReload) {
+            this.router.navigateByUrl(url).then(() => {
+                window.location.reload();
+            });
+
+            return;
+        }
+
         this.router.navigateByUrl(url);
     }
 }
